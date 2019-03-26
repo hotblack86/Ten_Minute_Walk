@@ -21,11 +21,7 @@ attr_reader :input, :latitude, :longitude
 
   def direction_even
     @input.each do |dir|
-      if dir === 'w' || dir === 'e'
-        @latitude += 1
-      elsif dir === 'n' || dir === 's'
-        @longitude += 1
-      end
+      dir === 'w' || dir === 'e' ? @latitude += 1 : @longitude += 1
     end
   end
 
