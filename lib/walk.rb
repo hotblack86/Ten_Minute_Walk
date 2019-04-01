@@ -1,18 +1,20 @@
 
 class Walk
 
-attr_reader :input, :latitude, :longitude
+attr_reader :input, :west, :east, :north, :south
 
   def initialize(input)
     @input = input
-    @latitude = 0
-    @longitude = 0
+    @west = 0
+    @east = 0
+    @north = 0
+    @south = 0
   end
 
   def run
     is_ten?
     direction_even
-    return @latitude.even? || @longitude.even?
+    @west === @east && @north === @south ? true : false
   end
 
   def is_ten?
@@ -21,7 +23,15 @@ attr_reader :input, :latitude, :longitude
 
   def direction_even
     @input.each do |dir|
-      dir === 'w' || dir === 'e' ? @latitude += 1 : @longitude += 1
+      if dir === 'w'
+        @west += 1
+      elsif dir === 'e'
+        @east += 1
+      elsif dir === 'n'
+        @north += 1 
+      else 
+        @south += 1
+      end  
     end
   end
 
